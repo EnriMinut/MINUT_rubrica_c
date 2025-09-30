@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_CONATTATTI 100
+#define MAX_CONTTATTI 100
 
-struct Contatto{
+typedef struct {
     char nome[30];
     char cognome[30];
     char telefono[11];
-};
+}Contatto;
+
+
 
 int main() {
-    Contatto rubrica[MAX_CONTATTI];
+    Contatto rubrica[MAX_CONTTATTI];
     int n = 0;
-
+    int scelta = 0;
     while (scelta != 5){
         printf("\n***RUBRICA***\n");
         printf("1. Aggiungi contatto\n");
