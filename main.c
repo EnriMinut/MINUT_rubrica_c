@@ -77,4 +77,22 @@ void visualizzaContatti(Contatto rubrica[], int n) {
     }
 }
 
+void cercaContatto(Contatto rubrica[], int n) {
+    char cognome[30];
+    int trovato = 0;
 
+    printf("Inserisci cognome da cercare: ");
+    scanf("%29s", cognome);
+
+    for (int i = 0; i < n; i++) {
+        if (strcmp(rubrica[i].cognome, cognome) == 0) {
+            printf("Contatto trovato: %s %s - %s\n",
+                   rubrica[i].nome, rubrica[i].cognome, rubrica[i].telefono);
+            trovato = 1;
+        }
+    }
+
+    if (!trovato) {
+        printf("Nessun contatto trovato con cognome %s.\n", cognome);
+    }
+}
