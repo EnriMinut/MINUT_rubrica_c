@@ -6,7 +6,7 @@
 struct Contatto{
     char nome[30];
     char cognome[30];
-    char telefono[10];
+    char telefono[11];
 };
 
 int main() {
@@ -44,4 +44,23 @@ int main() {
     };
 
     return 0;
+}
+
+void aggiungiContatto(Contatto rubrica[], int *n) {
+    if (*n >= MAX_CONTATTI) {
+        printf("Rubrica piena!\n");
+        return;
+    }
+
+    printf("Inserisci nome: ");
+    scanf("%29s", rubrica[*n].nome);
+
+    printf("Inserisci cognome: ");
+    scanf("%29s", rubrica[*n].cognome);
+
+    printf("Inserisci telefono: ");
+    scanf("%10s", rubrica[*n].telefono);
+
+    (*n)++;
+    printf("Contatto aggiunto con successo!\n");
 }
