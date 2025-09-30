@@ -93,6 +93,33 @@ void cercaContatto(Contatto rubrica[], int n) {
     }
 
     if (!trovato) {
-        printf("Nessun contatto trovato con cognome %s.\n", cognome);
+        printf("Nessun contatto trovato %s.\n", cognome);
     }
+}
+
+void eliminaContatto(Contatto rubrica[], int *n) {
+    char cognome[30];
+    int pos = -1;
+
+    printf("Inserisci cognome del contatto da eliminare: ");
+    scanf("%29s", cognome);
+
+    for (int i = 0; i < *n; i++) {
+        if (strcmp(rubrica[i].cognome, cognome) == 0) {
+            pos = i;
+            break;
+        }
+    }
+
+    if (pos == -1) {
+        printf("Nessun contatto trovato %s.\n", cognome);
+        return;
+    }
+
+    for (int i = pos; i < *n - 1; i++) {
+        rubrica[i] = rubrica[i + 1];
+    }
+
+    (*n)--;
+    printf("Contatto eliminato con successo.\n");
 }
