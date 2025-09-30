@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_CONTTATTI 100
+#define MAX_CONTATTI 100
 
 typedef struct {
     char nome[30];
@@ -12,7 +12,7 @@ typedef struct {
 
 
 int main() {
-    Contatto rubrica[MAX_CONTTATTI];
+    Contatto rubrica[MAX_CONTATTI];
     int n = 0;
     int scelta = 0;
     while (scelta != 5){
