@@ -14,7 +14,7 @@ int main() {
     int n = 0;
 
     while (scelta != 5){
-        printf("\nRUBRICA \n");
+        printf("\n***RUBRICA***\n");
         printf("1. Aggiungi contatto\n");
         printf("2. Visualizza tutti i contatti\n");
         printf("3. Ricerca contatto per cognome\n");
@@ -64,3 +64,17 @@ void aggiungiContatto(Contatto rubrica[], int *n) {
     (*n)++;
     printf("Contatto aggiunto con successo!\n");
 }
+
+void visualizzaContatti(Contatto rubrica[], int n) {
+    if (n == 0) {
+        printf("Rubrica vuota.\n");
+        return;
+    }
+
+    printf("\n***ELENCO CONTATTI***\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d) %s %s - %s\n", i + 1, rubrica[i].nome, rubrica[i].cognome, rubrica[i].telefono);
+    }
+}
+
+
