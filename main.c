@@ -8,7 +8,6 @@ struct Contatto{
     char nome[30];
     char cognome[30];
     char telefono[11];
-    // test dvd
 };
 
 struct Contatto rubrica[MAX_CONTATTI];
