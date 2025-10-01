@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define MAX_CONTATTI 100
 
@@ -94,36 +95,39 @@ void eliminaContatto(int *n) {
 int main() {
 
     int n = 0;
-    int scelta = 0;
-    while (scelta != 5){
+    char scelta[3];
+    bool exit = true;
+    do{
         printf("\n***RUBRICA***\n");
         printf("1. Aggiungi contatto\n");
         printf("2. Visualizza tutti i contatti\n");
         printf("3. Ricerca contatto per cognome\n");
         printf("4. Elimina contatto per cognome\n");
         printf("5. Esci\n");
-        scanf("%d", &scelta);
+        scanf("%s", &scelta);
 
-        switch (scelta) {
-            case 1:
+        switch (scelta[0]) {
+            case '1':
                 aggiungiContatto(&n);
                 break;
-            case 2:
+            case '2':
                 visualizzaContatti(n);
                 break;
-            case 3:
+            case '3':
                 cercaContatto(n);
                 break;
-            case 4:
+            case '4':
                 eliminaContatto(&n);
                 break;
-            case 5:
+            case '5':
                 printf("Uscita dal programma.\n");
+                exit = false;
                 break;
             default:
                 printf("Scelta non valida!\n");
+                break;
         }
-    };
+    }while (exit);
 
     return 0;
 }
