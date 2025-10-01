@@ -1,54 +1,19 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define MAX_CONTATTI 100
 
-typedef struct {
+struct Contatto{
     char nome[30];
     char cognome[30];
     char telefono[11];
-}Contatto;
+    // test dvd
+};
 
+struct Contatto rubrica[MAX_CONTATTI];
 
-
-int main() {
-    Contatto rubrica[MAX_CONTATTI];
-    int n = 0;
-    int scelta = 0;
-    while (scelta != 5){
-        printf("\n***RUBRICA***\n");
-        printf("1. Aggiungi contatto\n");
-        printf("2. Visualizza tutti i contatti\n");
-        printf("3. Ricerca contatto per cognome\n");
-        printf("4. Elimina contatto per cognome\n");
-        printf("5. Esci\n");
-        scanf("%d", &scelta);
-
-        switch (scelta) {
-            case 1:
-                aggiungiContatto(rubrica, &n);
-                break;
-            case 2:
-                visualizzaContatti(rubrica, n);
-                break;
-            case 3:
-                cercaContatto(rubrica, n);
-                break;
-            case 4:
-                eliminaContatto(rubrica, &n);
-                break;
-            case 5:
-                printf("Uscita dal programma.\n");
-                break;
-            default:
-                printf("Scelta non valida!\n");
-        }
-    };
-
-    return 0;
-}
-
-void aggiungiContatto(Contatto rubrica[], int *n) {
+void aggiungiContatto(int *n) {
     if (*n >= MAX_CONTATTI) {
         printf("Rubrica piena!\n");
         return;
@@ -67,7 +32,7 @@ void aggiungiContatto(Contatto rubrica[], int *n) {
     printf("Contatto aggiunto con successo!\n");
 }
 
-void visualizzaContatti(Contatto rubrica[], int n) {
+void visualizzaContatti(int n) {
     if (n == 0) {
         printf("Rubrica vuota.\n");
         return;
@@ -79,7 +44,7 @@ void visualizzaContatti(Contatto rubrica[], int n) {
     }
 }
 
-void cercaContatto(Contatto rubrica[], int n) {
+void cercaContatto(int n) {
     char cognome[30];
     int trovato = 0;
 
@@ -99,7 +64,7 @@ void cercaContatto(Contatto rubrica[], int n) {
     }
 }
 
-void eliminaContatto(Contatto rubrica[], int *n) {
+void eliminaContatto(int *n) {
     char cognome[30];
     int pos = -1;
 
@@ -114,7 +79,7 @@ void eliminaContatto(Contatto rubrica[], int *n) {
     }
 
     if (pos == -1) {
-        printf("Nessun contatto trovato %s.\n", cognome);
+        printf("Nessun contatto %s trovato .\n", cognome);
         return;
     }
 
@@ -124,4 +89,42 @@ void eliminaContatto(Contatto rubrica[], int *n) {
 
     (*n)--;
     printf("Contatto eliminato con successo.\n");
+}
+
+
+int main() {
+
+    int n = 0;
+    int scelta = 0;
+    while (scelta != 5){
+        printf("\n***RUBRICA***\n");
+        printf("1. Aggiungi contatto\n");
+        printf("2. Visualizza tutti i contatti\n");
+        printf("3. Ricerca contatto per cognome\n");
+        printf("4. Elimina contatto per cognome\n");
+        printf("5. Esci\n");
+        scanf("%d", &scelta);
+
+        switch (scelta) {
+            case 1:
+                aggiungiContatto(&n);
+                break;
+            case 2:
+                visualizzaContatti(n);
+                break;
+            case 3:
+                cercaContatto(n);
+                break;
+            case 4:
+                eliminaContatto(&n);
+                break;
+            case 5:
+                printf("Uscita dal programma.\n");
+                break;
+            default:
+                printf("Scelta non valida!\n");
+        }
+    };
+
+    return 0;
 }
